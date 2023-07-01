@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "775082683553",
+    "project_id": "yogeshapp-10eb7",
+    "storage_bucket": "yogeshapp-10eb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775082683553:android:82d546500115dbbb5e14e0",
+        "android_client_info": {
+          "package_name": "com.yogeshapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775082683553-67lsbbfe0rpjr58ung4efe3hfkpkaknq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yogeshapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "775082683553-mlar5dccifujq1tvfgac8o8vo5glu9h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvbyEiWAK1EFre3KqREtOb1hjNVTJDhZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775082683553-mlar5dccifujq1tvfgac8o8vo5glu9h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
