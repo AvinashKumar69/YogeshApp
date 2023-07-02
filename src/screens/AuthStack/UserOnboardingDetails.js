@@ -1,7 +1,9 @@
 import React, {useContext, useState} from 'react';
-import {Alert, StyleSheet, Text, View} from 'react-native';
-import {Button, TextInput} from 'react-native-paper';
+import {Alert, StyleSheet, View} from 'react-native';
+import {Button} from 'react-native-paper';
+import DropDown from 'react-native-paper-dropdown';
 
+import {colorList, genderList} from '../../assets/data/DropdownData';
 import Colors from '../../common/Colors';
 import {
   addAdditionalUserInfoToDB,
@@ -12,28 +14,27 @@ import {AuthenticationContext} from '../../services/AuthContext';
 const UserOnboardingDetails = () => {
   const {setIsUserOnboarded, user} = useContext(AuthenticationContext);
 
-  const [userOnboardingDetails, setUserOnboardingDetails] = useState({
-    Question1: '',
-    Question2: '',
-    Question3: '',
-    Question4: '',
-  });
-  const {Question1, Question2, Question3, Question4} = userOnboardingDetails;
+  const [dropdownValue1, setDropdownValue1] = useState('');
+  const [dropdownValue2, setDropdownValue2] = useState('');
+  const [dropdownValue3, setDropdownValue3] = useState('');
+  const [dropdownValue4, setdropdownValue4] = useState('');
 
-  const [selected, setSelected] = useState({
-    selected1: false,
-    selected2: false,
-    selected3: false,
-    selected4: false,
+  const [showDropDown, setShowDropDown] = useState({
+    dropdown1: false,
+    dropdown2: false,
+    dropdown3: false,
+    dropdown4: false,
   });
-  const {selected1, selected2, selected3, selected4} = selected;
+  const {dropdown1, dropdown2, dropdown3, dropdown4} = showDropDown;
 
-  const userOnboardingDetailsHandler = (fieldValue, value) => {
-    setUserOnboardingDetails({
-      ...userOnboardingDetails,
-      [fieldValue]: value,
-    });
-  };
+  // const [userOnboardingDetails, setUserOnboardingDetails] = useState({
+  //   dropdownValue1: '',
+  //   dropdownValue2: '',
+  //   dropdownValue3: '',
+  //   dropdownValue4: '',
+  // });
+  // const {dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4} =
+  //   userOnboardingDetails;
 
   const handleSubmit = () => {
     if (user) {
@@ -48,6 +49,13 @@ const UserOnboardingDetails = () => {
         phoneNumber: user?.phoneNumber,
         photoURL: user?.photoURL,
         metadata: user?.metadata,
+      };
+      //
+      const userOnboardingDetails = {
+        dropdownValue1: dropdownValue1,
+        dropdownValue2: dropdownValue2,
+        dropdownValue3: dropdownValue3,
+        dropdownValue4: dropdownValue4,
       };
       //
       addUserToDB(userInfo, user?.uid)
@@ -65,65 +73,83 @@ const UserOnboardingDetails = () => {
   };
 
   return (
-    <View style={styles.userOnboardingDetails}>
-      <TextInput
-        label="Question1"
-        placeholder="Select"
-        placeholderTextColor={Colors.Black}
+    <View style={styles.safeContainerStyle}>
+      <DropDown
+        label="Question 1"
         mode="outlined"
-        outlineColor={Colors.Egyption_Blue}
-        activeOutlineColor={Colors.Purple}
-        //
-        value={Question1}
-        // onChangeText={text => setText(text)}
-        onChangeText={value => userOnboardingDetailsHandler('Question1', value)}
-      />
-      {!selected1 && (
-        <View style={styles.dropdownStyle}>
-          <Text>Some dropdown value here</Text>
-        </View>
-      )}
-
-      <TextInput
-        label="Question2"
-        placeholder="Select"
-        placeholderTextColor={Colors.Black}
-        mode="outlined"
-        outlineColor={Colors.Egyption_Blue}
-        activeOutlineColor={Colors.Purple}
-        //
-        value={Question2}
-        // onChangeText={text => setText(text)}
-        onChangeText={value => userOnboardingDetailsHandler('Question2', value)}
+        text
+        visible={dropdown1}
+        showDropDown={() => setShowDropDown({...showDropDown, dropdown1: true})}
+        onDismiss={() => setShowDropDown({...showDropDown, dropdown1: false})}
+        value={dropdownValue1}
+        // setValue={val =>
+        //   setUserOnboardingDetails({
+        //     ...userOnboardingDetails,
+        //     ['dropdownValue1']: val,
+        //   })
+        // }
+        setValue={setDropdownValue1}
+        list={genderList}
       />
 
-      <TextInput
-        label="Question3"
-        placeholder="Select"
-        placeholderTextColor={Colors.Black}
+      <DropDown
+        label="Question 2"
         mode="outlined"
-        outlineColor={Colors.Egyption_Blue}
-        activeOutlineColor={Colors.Purple}
-        //
-        value={Question3}
-        // onChangeText={text => setText(text)}
-        onChangeText={value => userOnboardingDetailsHandler('Question3', value)}
+        visible={dropdown2}
+        showDropDown={() => setShowDropDown({...showDropDown, dropdown2: true})}
+        onDismiss={() => setShowDropDown({...showDropDown, dropdown2: false})}
+        value={dropdownValue2}
+        // setValue={val =>
+        //   setUserOnboardingDetails({
+        //     ...userOnboardingDetails,
+        //     ['dropdownValue2']: val,
+        //   })
+        // }
+        setValue={setDropdownValue2}
+        list={colorList}
       />
 
-      <TextInput
-        label="Question4"
-        placeholder="Select"
-        placeholderTextColor={Colors.Black}
+      <DropDown
+        label="Question 3"
         mode="outlined"
-        outlineColor={Colors.Egyption_Blue}
-        activeOutlineColor={Colors.Purple}
-        //
-        value={Question4}
-        // onChangeText={text => setText(text)}
-        onChangeText={value => userOnboardingDetailsHandler('Question4', value)}
+        visible={dropdown3}
+        showDropDown={() => setShowDropDown({...showDropDown, dropdown3: true})}
+        onDismiss={() => setShowDropDown({...showDropDown, dropdown3: false})}
+        value={dropdownValue3}
+        // setValue={val =>
+        //   setUserOnboardingDetails({
+        //     ...userOnboardingDetails,
+        //     ['dropdownValue3']: val,
+        //   })
+        // }
+        setValue={setDropdownValue3}
+        list={genderList}
       />
 
-      <Button icon="camera" mode="contained" onPress={handleSubmit}>
+      <DropDown
+        label="Question 4"
+        mode="outlined"
+        visible={dropdown4}
+        showDropDown={() => setShowDropDown({...showDropDown, dropdown4: true})}
+        onDismiss={() => setShowDropDown({...showDropDown, dropdown4: false})}
+        value={dropdownValue4}
+        // setValue={val =>
+        //   setUserOnboardingDetails({
+        //     ...userOnboardingDetails,
+        //     ['dropdownValue4']: val,
+        //   })
+        // }
+        setValue={setdropdownValue4}
+        list={genderList}
+      />
+
+      <Button
+        icon="content-save-move"
+        mode="contained"
+        buttonColor={Colors.Egyption_Blue}
+        style={styles.submitButton}
+        labelStyle={styles.submitButtonLabel}
+        onPress={handleSubmit}>
         Submit
       </Button>
     </View>
@@ -141,5 +167,27 @@ const styles = StyleSheet.create({
   dropdownStyle: {
     borderWidth: 1,
     borderColor: Colors.Egyption_Blue,
+  },
+  //
+  containerStyle: {
+    flex: 1,
+    backgroundColor: Colors.Gray98,
+  },
+  spacerStyle: {
+    marginBottom: 15,
+  },
+  safeContainerStyle: {
+    flex: 1,
+    margin: 20,
+    justifyContent: 'center',
+  },
+  submitButton: {
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  submitButtonLabel: {
+    color: Colors.White,
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
