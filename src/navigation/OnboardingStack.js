@@ -12,8 +12,7 @@ const OnboardingStack = () => {
         headerShown: false,
         animation: 'fade',
       }}
-      // initialRouteName="UserOnboardingDetails"
-      initialRouteName="Login">
+      initialRouteName="UserOnboardingDetails">
       <Stack.Screen
         name="UserOnboardingDetails"
         component={UserOnboardingDetails}

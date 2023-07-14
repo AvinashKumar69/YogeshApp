@@ -1,14 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+
+import Colors from '../../common/Colors';
 
 const Profile = () => {
   return (
-    <View>
+    <View style={styles.profile_topContainer}>
       <Text>Profile</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  profile_topContainer: {
+    flex: 1,
+    backgroundColor: Colors.Gray98,
+  },
+});

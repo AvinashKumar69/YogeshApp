@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+
 import Login from '../screens/AuthStack/Login';
-import UserOnboardingDetails from '../screens/AuthStack/UserOnboardingDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,14 +12,8 @@ const AuthStack = () => {
         headerShown: false,
         animation: 'fade',
       }}
-      // initialRouteName="UserOnboardingDetails"
-      initialRouteName="Login"
-      >
+      initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
-      {/* <Stack.Screen
-        name="UserOnboardingDetails"
-        component={UserOnboardingDetails}
-      /> */}
     </Stack.Navigator>
   );
 };
