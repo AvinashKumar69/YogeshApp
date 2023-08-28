@@ -1,14 +1,26 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useQuery} from '@tanstack/react-query';
 
 import Colors from '../../common/Colors';
+import {getTodos} from '../../queries/reactQueryFunctions';
+import DisplayTodo from '../../components/DisplayTodo';
 
 const UserHome = () => {
+  // Queries
+  const query = useQuery({queryKey: ['todos'], queryFn: () => getTodos()});
+  const DATA = query?.data?.data;
+  console.log('query DATA==>', DATA);
+
   return (
     <View style={styles.home_topContainer}>
-      <Text style={styles.home_text}>
+      {/* <Text style={styles.home_text}>
         Notification will be{'\n'}displayed here!!
-      </Text>
+      </Text> */}
+      {/* {DATA?.map((item, index) => {
+        return <Text key={String(index)}>{item?.todoName}</Text>;
+      })} */}
+      <DisplayTodo DATA={DATA} />
     </View>
   );
 };

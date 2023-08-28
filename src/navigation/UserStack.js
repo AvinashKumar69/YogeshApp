@@ -1,9 +1,10 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {StyleSheet} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Colors from '../common/Colors';
+import InShortsFeed from '../screens/UserStack/InShortsFeed';
 import Profile from '../screens/UserStack/Profile';
 import UserHome from '../screens/UserStack/UserHome';
 
@@ -14,7 +15,7 @@ const UserStack = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarStyle: {
-          backgroundColor: Colors.Egyption_Blue,
+          backgroundColor: Colors.Egyptian_Blue,
         },
         tabBarIcon: ({focused}) => {
           let iconName;
@@ -23,6 +24,8 @@ const UserStack = () => {
             iconName = focused ? 'bell-ring' : 'bell-ring-outline';
           else if (route.name === 'Profile')
             iconName = focused ? 'account-tie' : 'account-tie-outline';
+          else if (route.name === 'InShortsFeed')
+            iconName = focused ? 'message-image' : 'message-image-outline';
 
           return (
             <MaterialCommunityIcons
@@ -35,7 +38,7 @@ const UserStack = () => {
         tabBarShowLabel: false,
       })}
       tabBarPosition="top"
-      initialRouteName="Notification"
+      initialRouteName="InShortsFeed"
       backBehavior="history">
       <Tab.Screen
         name="Notification"
@@ -50,6 +53,14 @@ const UserStack = () => {
         component={Profile}
         options={{
           tabBarLabel: 'Profile',
+          tabBarLabelStyle: styles.userStack_tabBarLabelStyle,
+        }}
+      />
+      <Tab.Screen
+        name="InShortsFeed"
+        component={InShortsFeed}
+        options={{
+          tabBarLabel: 'InShortsFeed',
           tabBarLabelStyle: styles.userStack_tabBarLabelStyle,
         }}
       />

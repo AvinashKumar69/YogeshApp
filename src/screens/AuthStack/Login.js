@@ -40,7 +40,7 @@ const Login = () => {
         <ActivityIndicator
           size={100}
           style={styles.activityIndicator}
-          color={Colors.Egyption_Blue}
+          color={Colors.Egyptian_Blue}
         />
       ) : (
         <GoogleSigninButton

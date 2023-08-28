@@ -146,7 +146,7 @@ const UserOnboardingDetails = () => {
       <Button
         icon="content-save-move"
         mode="contained"
-        buttonColor={Colors.Egyption_Blue}
+        buttonColor={Colors.Egyptian_Blue}
         style={styles.submitButton}
         labelStyle={styles.submitButtonLabel}
         onPress={handleSubmit}>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   dropdownStyle: {
     borderWidth: 1,
-    borderColor: Colors.Egyption_Blue,
+    borderColor: Colors.Egyptian_Blue,
   },
   //
   containerStyle: {
