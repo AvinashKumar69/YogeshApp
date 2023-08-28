@@ -5,6 +5,7 @@ import {Button, Card, Text} from 'react-native-paper';
 
 import Colors from '../common/Colors';
 import {deleteTodos} from '../queries/reactQueryFunctions';
+import {showToast} from '../utils/ToastAndroid';
 
 const TodoCard = ({TodoData}) => {
   // Access the client
@@ -16,6 +17,7 @@ const TodoCard = ({TodoData}) => {
       deleteTodos(iD)
         .then(() => {
           console.log('todo deleted');
+          showToast('Todo Deleted!');
         })
         .catch(error => console.error('todo error:', error)),
     onSuccess: () => {

@@ -10,73 +10,73 @@ import Colors from '../../common/Colors';
 import {postTodos} from '../../queries/reactQueryFunctions';
 
 const Profile = () => {
-  // const schema = yup
-  //   .object({
-  //     firstName: yup
-  //       .string('Should be string')
-  //       .required('Required field')
-  //       .min(3, 'Atleast 3 characters')
-  //       .max(10, 'Up to 10 characters'),
-  //     lastName: yup
-  //       .string('Should be string')
-  //       .required('Required field')
-  //       .min(3, 'Atleast 3 characters')
-  //       .max(10, 'Up to 10 characters'),
-  //   })
-  //   .required();
+  const schema = yup
+    .object({
+      firstName: yup
+        .string('Should be string')
+        .required('Required field')
+        .min(3, 'Atleast 3 characters')
+        .max(10, 'Up to 10 characters'),
+      lastName: yup
+        .string('Should be string')
+        .required('Required field')
+        .min(3, 'Atleast 3 characters')
+        .max(10, 'Up to 10 characters'),
+    })
+    .required();
 
-  // const {
-  //   control,
-  //   handleSubmit,
-  //   formState: {errors, isValid},
-  //   getValues,
-  // } = useForm({
-  //   defaultValues: {
-  //     firstName: '',
-  //     lastName: '',
-  //   },
-  //   resolver: yupResolver(schema),
-  // });
-
-  // const handleGetValue = () => {
-  //   const values = getValues();
-  //   console.log(values);
-  // };
-
-  // // * form submission handler
-  // const onSubmit = data => console.log(data);
-
-  // Access the client
-  const queryClient = useQueryClient();
-
-  // Mutations
-  const mutation = useMutation({
-    mutationFn: postTodoData =>
-      postTodos(postTodoData)
-        .then(() => {
-          console.log('todo success');
-        })
-        .catch(error => console.error('todo error:', error)),
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({queryKey: ['todos']});
-      setTodo('');
+  const {
+    control,
+    handleSubmit,
+    formState: {errors, isValid},
+    getValues,
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
     },
+    resolver: yupResolver(schema),
   });
 
-  const [todo, setTodo] = useState('');
-  // console.log('todo-->', todo);
-
-  const addTodoHandler = () => {
-    mutation.mutate({
-      todoName: todo,
-      isComplete: false,
-    });
+  const handleGetValue = () => {
+    const values = getValues();
+    console.log(values);
   };
+
+  // * form submission handler
+  const onSubmit = data => console.log(data);
+
+  // // Access the client
+  // const queryClient = useQueryClient();
+
+  // // Mutations
+  // const mutation = useMutation({
+  //   mutationFn: postTodoData =>
+  //     postTodos(postTodoData)
+  //       .then(() => {
+  //         console.log('todo success');
+  //       })
+  //       .catch(error => console.error('todo error:', error)),
+  //   onSuccess: () => {
+  //     // Invalidate and refetch
+  //     queryClient.invalidateQueries({queryKey: ['todos']});
+  //     setTodo('');
+  //   },
+  // });
+
+  // const [todo, setTodo] = useState('');
+  // // console.log('todo-->', todo);
+
+  // const addTodoHandler = () => {
+  //   mutation.mutate({
+  //     todoName: todo,
+  //     isComplete: false,
+  //   });
+  // };
 
   return (
     <View style={styles.profile_topContainer}>
-      {/* <Controller
+      <Controller
         control={control}
         render={({field: {onChange, onBlur, value}}) => (
           <TextInput
@@ -136,9 +136,9 @@ const Profile = () => {
         <Text>getValues</Text>
       </Pressable>
 
-      <Divider style={styles.profile_divider} /> */}
+      <Divider style={styles.profile_divider} />
 
-      <Text style={styles.profile_todoTopHeading}>Manage Your Todo Here:</Text>
+      {/* <Text style={styles.profile_todoTopHeading}>Manage Your Todo Here:</Text>
 
       <TextInput
         label="Add Todo"
@@ -156,7 +156,7 @@ const Profile = () => {
         style={styles.profile_addTodoButton}
         onPress={addTodoHandler}>
         Add Todo
-      </Button>
+      </Button> */}
     </View>
   );
 };

@@ -1,12 +1,16 @@
 import {useQuery} from '@tanstack/react-query';
-import React from 'react';
+import React, {useState} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {FAB} from 'react-native-paper';
 
 import Colors from '../../common/Colors';
 import TodoCard from '../../components/TodoCard';
 import {getTodos} from '../../queries/reactQueryFunctions';
+import AddTodoModal from '../../components/AddTodoModal';
 
 const UserHome = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   // Queries
   const {isLoading, isError, data, error} = useQuery({
     queryKey: ['todos'],
@@ -36,6 +40,15 @@ const UserHome = () => {
       ) : (
         <TodoCard TodoData={TodoData} />
       )}
+      <AddTodoModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
+      <FAB
+        icon="plus"
+        style={styles.fab}
+        onPress={() => setModalVisible(!modalVisible)}
+      />
     </View>
   );
 };
@@ -56,5 +69,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });
