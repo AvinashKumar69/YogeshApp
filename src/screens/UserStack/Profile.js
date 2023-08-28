@@ -60,7 +60,6 @@ const Profile = () => {
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({queryKey: ['todos']});
-      console.log('todo added');
       setTodo('');
     },
   });

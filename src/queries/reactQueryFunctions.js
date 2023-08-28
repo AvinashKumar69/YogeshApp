@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TodoAPI = 'https://calm-plum-jaguar-tutu.cyclic.app/todos';
+const TodoAPI = `https://calm-plum-jaguar-tutu.cyclic.app/todos`;
 
 export const getTodos = async () => {
   const response = await fetch(TodoAPI);
@@ -20,14 +20,16 @@ export const getTodos = async () => {
 };
 
 export const postTodos = async postTodoData => {
-  console.log('postTodoData==>', postTodoData);
+  // console.log('postTodoData==>', postTodoData);
   return await axios.post(TodoAPI, {
     ...postTodoData,
   });
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
+};
+
+export const deleteTodos = async iD => {
+  // console.log('iD==>', iD);
+  const iDToDelete = iD?.iD;
+  return await axios.delete(
+    `https://calm-plum-jaguar-tutu.cyclic.app/todos/${iDToDelete}`,
+  );
 };

@@ -10,7 +10,7 @@ const UserHome = () => {
   // Queries
   const query = useQuery({queryKey: ['todos'], queryFn: () => getTodos()});
   const DATA = query?.data?.data;
-  console.log('query DATA==>', DATA);
+  // console.log('query DATA==>', DATA);
 
   return (
     <View style={styles.home_topContainer}>
