@@ -17,34 +17,34 @@ const UserStack = () => {
         tabBarStyle: {
           backgroundColor: Colors.Egyptian_Blue,
         },
-        tabBarIcon: ({focused}) => {
-          let iconName;
+        // tabBarIcon: ({focused}) => {
+        //   let iconName;
 
-          if (route.name === 'Notification')
-            iconName = focused ? 'bell-ring' : 'bell-ring-outline';
-          else if (route.name === 'Profile')
-            iconName = focused ? 'account-tie' : 'account-tie-outline';
-          else if (route.name === 'InShortsFeed')
-            iconName = focused ? 'message-image' : 'message-image-outline';
+        //   if (route.name === 'Home')
+        //     iconName = focused ? 'bell-ring' : 'bell-ring-outline';
+        //   else if (route.name === 'Profile')
+        //     iconName = focused ? 'account-tie' : 'account-tie-outline';
+        //   else if (route.name === 'InShortsFeed')
+        //     iconName = focused ? 'message-image' : 'message-image-outline';
 
-          return (
-            <MaterialCommunityIcons
-              name={iconName}
-              size={30}
-              color={Colors.White}
-            />
-          );
-        },
-        tabBarShowLabel: false,
+        //   return (
+        //     <MaterialCommunityIcons
+        //       name={iconName}
+        //       size={30}
+        //       color={Colors.White}
+        //     />
+        //   );
+        // },
+        tabBarShowLabel: true,
       })}
       tabBarPosition="top"
-      initialRouteName="InShortsFeed"
+      initialRouteName="Home"
       backBehavior="history">
       <Tab.Screen
-        name="Notification"
+        name="Home"
         component={UserHome}
         options={{
-          tabBarLabel: 'Notification',
+          tabBarLabel: 'Home',
           tabBarLabelStyle: styles.userStack_tabBarLabelStyle,
         }}
       />
